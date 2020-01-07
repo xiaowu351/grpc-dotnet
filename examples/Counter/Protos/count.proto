@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+//option csharp_namespace = "Server";
+import "google/protobuf/empty.proto";
+package count;
+
+service Counter{
+    // get current count
+    rpc IncrementCount(google.protobuf.Empty) returns (CounterReply);
+    rpc AccumulateCount(stream CounterRequest) returns (CounterReply);
+
+}
+
+message CounterRequest{
+    int32 count = 1;
+
+}
+
+message CounterReply{
+    int32 count = 1;
+}
+

@@ -2,4 +2,12 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/examples/.vs
+/examples/.vs/*
+/examples/*/Server/obj
+/examples/*/Server/bin/*
+/examples/*/Client/obj
+/examples/*/Client/bin/*
+/examples/*/.vs/*
+/examples/Tester/Tests/bin/*
+/examples/Tester/Tests/obj
+*.user

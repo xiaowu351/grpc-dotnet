@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+//option csharp_namespace = "Server";
+
+package test;
+
+// The greeting service definition.
+service Tester {
+  rpc SayHelloUnary(HelloRequest) returns (HelloReply);
+  rpc SayHelloServerStreaming (HelloRequest) returns (stream HelloReply);
+  rpc SayHelloClientStreaming (stream HelloRequest) returns (HelloReply);
+  rpc SayHelloBidirectionalStreaming (stream HelloRequest) returns (stream HelloReply);
+}
+
+message HelloRequest {
+  string name =1;
+}
+
+message HelloReply {
+ string message = 1;
+   
+}

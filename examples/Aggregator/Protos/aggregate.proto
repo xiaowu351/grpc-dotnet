@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "greet.proto";
+import "count.proto";
+
+package aggregate;
+
+// The greeting service definition.
+service Aggregator {
+  // Sends a greeting
+  rpc SayHellos (greet.HelloRequest) returns (stream greet.HelloReply);
+  rpc AccumulateCount(stream count.CounterRequest) returns (count.CounterReply);
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+//option csharp_namespace = "Server";
+import "google/protobuf/empty.proto";
+package certify;
+
+ 
+service Certifier {
+  
+  rpc GetCertificateInfo (google.protobuf.Empty) returns (CertificateInfoResponse);
+   
+}
+
+ 
+message CertificateInfoResponse {
+  bool hasCertificate = 1;
+  string name = 2;
+}
+
+ 

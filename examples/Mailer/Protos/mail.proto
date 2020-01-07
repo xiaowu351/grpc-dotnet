@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+//option csharp_namespace = "Server";
+
+package mail;
+
+// The greeting service definition.
+service Mailer {
+  rpc Mailbox (stream ForwardMailMessage)  returns (stream MailboxMessage);
+}
+
+message ForwardMailMessage {
+  
+}
+
+message MailboxMessage {
+  int32 new = 1;
+  int32 forwarded = 2;
+  Reason reason = 3;
+
+  enum Reason{
+    Received = 0;
+    Forwarded = 1;
+  }
+}

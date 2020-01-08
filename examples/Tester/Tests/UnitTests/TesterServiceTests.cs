@@ -107,6 +107,8 @@ namespace Tests
             responseStream.Complete();
 
             Assert.IsNull(await responseStream.ReadNextAsync());
+
+
         }
     }
 }

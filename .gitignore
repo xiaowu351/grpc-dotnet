@@ -11,3 +11,4 @@
 /examples/Tester/Tests/bin/*
 /examples/Tester/Tests/obj
 *.user
+/.vs

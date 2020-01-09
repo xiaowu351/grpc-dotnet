@@ -12,3 +12,5 @@
 /examples/Tester/Tests/obj
 *.user
 /.vs
+/examples/Tester/TestMark/bin/Debug/netcoreapp3.1
+/examples/Tester/TestMark/obj

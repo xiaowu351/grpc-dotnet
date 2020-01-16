@@ -37,9 +37,19 @@ namespace Client
             {
                 Console.WriteLine($"Setting up HttpClient has certificate:{includeClientCertificate}");
                 var httpClient = CreateHttpClient(includeClientCertificate);
+
+                
+
+                var callCredential = CallCredentials.FromInterceptor((context, metadata) =>
+                {
+                    metadata.Add("Authorization", $"Bearer {CreateCertificateInfo().GetRawCertDataString()}");
+                    return Task.CompletedTask;
+                });
+
+                var channelCredentials = ChannelCredentials.Create(new SslCredentials(), callCredential);
                 var channel = GrpcChannel.ForAddress("https://localhost:5001", new GrpcChannelOptions { 
                     HttpClient = httpClient,
-                    //Credentials = new SslCredentials(CreateCertificateInfo().GetRawCertDataString())
+                    Credentials = channelCredentials
                 });
                 
                 var client = new Certifier.CertifierClient(channel);
@@ -73,14 +83,14 @@ namespace Client
                 
                 var clientCertificate = CreateCertificateInfo(); 
                 handler.ClientCertificates.Add(clientCertificate);
-                handler.ClientCertificateOptions = ClientCertificateOption.Manual;
-                handler.ServerCertificateCustomValidationCallback = (reqeust, certificate, chain, error) => {
-                    // 参考下列文章配置
-                    // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/certauth?view=aspnetcore-3.1
-                    reqeust.Headers.Add("X-ARR-ClientCert", certificate.GetRawCertDataString());
-                    Console.WriteLine(error);
-                    return true;
-                };
+                //handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+                //handler.ServerCertificateCustomValidationCallback = (reqeust, certificate, chain, error) => {
+                //    // 参考下列文章配置
+                //    // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/certauth?view=aspnetcore-3.1
+                //    reqeust.Headers.Add("X-ARR-ClientCert", certificate.GetRawCertDataString());
+                //    Console.WriteLine(error);
+                //    return true;
+                //};
 
                 
                

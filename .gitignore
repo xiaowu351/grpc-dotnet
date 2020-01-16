@@ -14,3 +14,9 @@
 /.vs
 /examples/Tester/TestMark/bin/Debug/netcoreapp3.1
 /examples/Tester/TestMark/obj
+/examples/Tester/TestMark
+/examples/ProtobufDefines/ConsoleApp1/bin/Debug/netcoreapp3.1
+/examples/ProtobufDefines/ConsoleApp1/obj
+/examples/Vigor/Grpc.AspNetCore.HealthChecks/bin/Debug/netcoreapp3.1
+/examples/Vigor/Grpc.AspNetCore.HealthChecks/obj
+/examples/ProtobufDefines
